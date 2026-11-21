@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Celebrating the Riemann Hypothesis</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="nav">
+    <a href="#what">What</a><a href="#explore">Zeros</a><a href="#primes">Primes</a><a href="#equiv">Equivalents</a>
+    <a href="#glossary">Glossary</a><a href="#learn">Learn</a><a href="#links">Links</a>
+  </nav>
+  <header class="hero">
+    <p class="eyebrow">1859 – ∞</p>
+    <h1>ζ(s) = 0 <span>⇒</span> Re(s) = ½</h1>
+    <p class="lead">A celebration of the Riemann Hypothesis: the most beautiful open question in mathematics.</p>
+    <a class="btn" href="#explore">Explore the zeros ↓</a>
+  </header>
+
+  <main>
+    <section id="what">
+      <h2>What is it?</h2>
+      <p>In 1859, Bernhard Riemann studied the function <code>ζ(s) = 1 + 1/2<sup>s</sup> + 1/3<sup>s</sup> + …</code>
+      and extended it to every complex number. He noticed that its zeros control how the prime numbers are spread out.
+      He guessed that every non-trivial zero lies on a single vertical line, <strong>Re(s) = ½</strong>, the <em>critical line</em>.</p>
+      <p>Over 160 years later, no one has proved him right or wrong. That is the reason to celebrate it.</p>
+    </section>
+
+    <section id="explore">
+      <h2>Watch the zeros appear</h2>
+      <p>This is the Riemann–Siegel Z function along the critical line. Every time the curve crosses zero, it is a non-trivial zero of ζ.</p>
+      <canvas id="plot" width="1000" height="360"></canvas>
+      <div class="controls">
+        <label>Height t up to <output id="tmax-out">60</output>
+          <input id="tmax" type="range" min="20" max="200" value="60">
+        </label>
+        <p id="count"></p>
+      </div>
+    </section>
+
+
+    <section id="primes">
+      <h2>Why primes care about zeros</h2>
+      <p>Let π(x) count the primes up to x. Gauss guessed π(x) ≈ x/ln x, and a better guess is the logarithmic integral Li(x).
+      Riemann showed the error between π(x) and Li(x) can be written as a sum over the zeros of ζ, so each zero adds a wave to the error.
+      If the hypothesis is true, the error stays as small as it could be, roughly √x · ln x.</p>
+      <canvas id="primeplot" width="1000" height="320"></canvas>
+      <div class="controls">
+        <label>x up to <output id="xmax-out">200</output>
+          <input id="xmax" type="range" min="50" max="5000" step="50" value="200">
+        </label>
+        <p><span class="key k1"></span>π(x) <span class="key k2"></span>Li(x) <span class="key k3"></span>x/ln x</p>
+      </div>
+      <p class="note" id="primenote"></p>
+
+      <h3>Euler's product: where the connection starts</h3>
+      <p class="formula">ζ(s) = Σ 1/nˢ = Π<sub>p prime</sub> 1/(1 − p<sup>−s</sup>)</p>
+      <p>Euler found that a sum over all integers equals a product over primes. This is the bridge between the zeta function and the primes.</p>
+    </section>
+
+    <section id="equiv">
+      <h2>Equivalent statements</h2>
+      <p>The hypothesis can be rewritten in several ways that look unrelated.</p>
+      <div class="cards">
+        <article><h3>Prime counting</h3><p>|π(x) − Li(x)| &lt; (1/8π)·√x·ln x for all x ≥ 2657 (Schoenfeld, 1976).</p></article>
+        <article><h3>Mertens function</h3><p>M(x) = Σ μ(n) grows no faster than x<sup>½+ε</sup> for every ε &gt; 0.</p></article>
+        <article><h3>Divisor sums</h3><p>σ(n) ≤ H<sub>n</sub> + e<sup>H<sub>n</sub></sup>·ln H<sub>n</sub> for all n ≥ 1 (Lagarias, 2002), where H<sub>n</sub> is the n-th harmonic number.</p></article>
+        <article><h3>Farey sequences</h3><p>Fractions in lowest terms between 0 and 1 are distributed with error about N<sup>½+ε</sup> (Franel–Landau).</p></article>
+      </div>
+
+      <h3>If it is true, if it is false</h3>
+      <div class="cards">
+        <article><h3>True</h3><p>Primes are about as regularly distributed as possible. Hundreds of published theorems that assume it become unconditional.</p></article>
+        <article><h3>False</h3><p>A zero off the line would be a major discovery. Prime irregularities would be larger than we think, and we'd learn something deep about ζ.</p></article>
+      </div>
+    </section>
+
+    <section id="glossary">
+      <h2>Glossary</h2>
+      <dl>
+        <dt>Complex number</dt><dd>A number a + bi where i² = −1.</dd>
+        <dt>Analytic continuation</dt><dd>Extending a function beyond where its formula converges. The series for ζ(s) only converges for Re(s) &gt; 1, but ζ extends to the whole plane except s = 1.</dd>
+        <dt>Trivial zeros</dt><dd>ζ(s) = 0 at s = −2, −4, −6, … These are understood and not in question.</dd>
+        <dt>Non-trivial zeros</dt><dd>The other zeros, all known to lie in the critical strip 0 &lt; Re(s) &lt; 1. The hypothesis says they all have Re(s) = ½.</dd>
+        <dt>Critical line</dt><dd>The vertical line Re(s) = ½.</dd>
+        <dt>Functional equation</dt><dd>A symmetry relating ζ(s) and ζ(1 − s). It makes the zeros symmetric about the critical line.</dd>
+        <dt>Generalized RH</dt><dd>The same claim for a larger family of functions, the Dirichlet L-functions.</dd>
+      </dl>
+    </section>
+
+    <section>
+      <h2>Reasons to celebrate</h2>
+      <div class="cards">
+        <article><h3>🔢 Primes</h3><p>It's equivalent to a sharp bound on how far the prime counting function strays from its smooth estimate.</p></article>
+        <article><h3>⚛️ Physics</h3><p>The zeros' spacing matches the energy levels of heavy atomic nuclei (random matrix theory).</p></article>
+        <article><h3>🖥️ Evidence</h3><p>Over 10<sup>13</sup> zeros have been checked (Gourdon, 2004), plus heights up to about 3×10<sup>12</sup> (Platt &amp; Trudgian, 2021). Every one sits on the line.</p></article>
+        <article><h3>💰 A prize</h3><p>It is one of the Clay Institute's Millennium Problems, worth $1,000,000.</p></article>
+      </div>
+    </section>
+
+    <section>
+      <h2>The first ten zeros</h2>
+      <ol id="zeros" class="zeros"></ol>
+      <p class="note">Each is the imaginary part <em>t</em> of a zero at ½ + <em>it</em>.</p>
+    </section>
+
+    <section>
+      <h2>Timeline</h2>
+      <ul class="timeline">
+        <li><b>1859</b> Riemann publishes “On the Number of Primes Less Than a Given Magnitude”.</li>
+        <li><b>1896</b> Hadamard and de la Vallée Poussin prove the Prime Number Theorem.</li>
+        <li><b>1900</b> Hilbert lists it among his 23 problems.</li>
+        <li><b>1914</b> Hardy proves infinitely many zeros lie on the line.</li>
+        <li><b>1973</b> Montgomery and Dyson notice the zeros' spacing matches random matrix statistics.</li>
+        <li><b>2000</b> The Clay Institute names it a Millennium Problem.</li>
+      </ul>
+    </section>
+
+    <section id="learn">
+      <h2>A learning path</h2>
+      <div class="cards">
+        <article><h3>🌱 Curious</h3><ul>
+          <li><a href="https://www.youtube.com/watch?v=sD0NjbwqlYw" target="_blank" rel="noopener">3Blue1Brown: Visualizing the Riemann zeta function</a></li>
+          <li>Book: <em>The Music of the Primes</em>, Marcus du Sautoy</li>
+          <li>Book: <em>Prime Obsession</em>, John Derbyshire</li></ul></article>
+        <article><h3>📚 Undergraduate</h3><ul>
+          <li>Learn complex analysis (Stein &amp; Shakarchi, <em>Complex Analysis</em>)</li>
+          <li>Learn analytic number theory (Apostol, <em>Introduction to Analytic Number Theory</em>)</li>
+          <li>Book: <em>Riemann's Zeta Function</em>, H. M. Edwards</li></ul></article>
+        <article><h3>🔬 Go deeper</h3><ul>
+          <li>Titchmarsh, <em>The Theory of the Riemann Zeta-Function</em></li>
+          <li>Davenport, <em>Multiplicative Number Theory</em></li>
+          <li>Iwaniec &amp; Kowalski, <em>Analytic Number Theory</em></li></ul></article>
+      </div>
+
+      <h3>Try it yourself</h3>
+      <pre><code># Python, with mpmath installed (pip install mpmath)
+from mpmath import zetazero, zeta
+print(zetazero(1))        # 0.5 + 14.1347251417347j
+print(zeta(0.5 + 14.134725141734693j))   # ~ 0</code></pre>
+    </section>
+
+    <section>
+      <h2>Common misconceptions</h2>
+      <ul class="plain">
+        <li><b>“It's been proven.”</b> No. Checking billions of zeros is strong evidence, not proof.</li>
+        <li><b>“It's only about zeros.”</b> It is really a statement about how primes are distributed.</li>
+        <li><b>“ζ(−1) = −1/12 is the hypothesis.”</b> That's a separate fact about analytic continuation.</li>
+        <li><b>“Someone claims a proof every year, so it's probably done.”</b> Claimed proofs appear regularly, but none has been accepted by the mathematical community.</li>
+      </ul>
+    </section>
+
+    <section id="links">
+      <h2>Links and resources</h2>
+      <ul class="links">
+        <li><a href="https://www.claymath.org/millennium-problems/riemann-hypothesis/" target="_blank" rel="noopener">Clay Mathematics Institute: official problem page</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Riemann_hypothesis" target="_blank" rel="noopener">Wikipedia: Riemann hypothesis</a></li>
+        <li><a href="https://en.wikipedia.org/wiki/Riemann_zeta_function" target="_blank" rel="noopener">Wikipedia: Riemann zeta function</a></li>
+        <li><a href="https://mathworld.wolfram.com/RiemannHypothesis.html" target="_blank" rel="noopener">Wolfram MathWorld: Riemann Hypothesis</a></li>
+        <li><a href="https://www.lmfdb.org/zeros/zeta/" target="_blank" rel="noopener">LMFDB: zeros of the zeta function</a></li>
+        <li><a href="https://www-users.cse.umn.edu/~odlyzko/zeta_tables/" target="_blank" rel="noopener">Andrew Odlyzko's tables of zeta zeros</a></li>
+        <li><a href="https://www.youtube.com/watch?v=sD0NjbwqlYw" target="_blank" rel="noopener">3Blue1Brown video on the zeta function</a></li>
+      </ul>
+      <p class="note">External links are provided as starting points. Please check them, since pages move over time.</p>
+    </section>
+  </main>
+
+  <footer><p>Built with Node.js · Still unproven, still beautiful.</p></footer>
+  <script src="script.js"></script>
+</body>
+</html>
